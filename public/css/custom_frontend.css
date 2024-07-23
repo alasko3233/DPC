@@ -1,0 +1,8 @@
+.smalls{
+    font-weight: bold !important;
+    font-size: 18px;
+}
+
+.rounded-pill-custom{
+  border-radius: 10px;
+}
