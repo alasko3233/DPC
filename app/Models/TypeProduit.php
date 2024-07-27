@@ -23,7 +23,7 @@ class TypeProduit extends Model
     public function imgUrl()
 {
     // Assurez-vous que $this->img contient le chemin relatif à public/
-    $relativePath = $this->img; // Par exemple : 'images/type_66a4f198221c8.jpg'
+    $relativePath ='/storage/'.$this->img; // Par exemple : 'images/type_66a4f198221c8.jpg'
     
     // Utilisez asset() pour générer l'URL complète à partir du chemin relatif
     return asset($relativePath);
