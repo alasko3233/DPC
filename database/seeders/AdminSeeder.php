@@ -21,7 +21,7 @@ class AdminSeeder extends Seeder
                     'phone'     => '91919083',
                     'email'     => 'contact@dpc.ml',
                     'genre'     => 'male',
-                    'password'  =>Hash::make('dpc@654321A!'),
+                    'password'  =>Hash::make('test1234'),
                     'created_at' => Carbon::now(),
                 ]);
 
