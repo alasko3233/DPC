@@ -45,8 +45,7 @@
 
                                         <a href="{{ route('produits.show', $produit->id) }}">
                                             <!-- Product image-->
-                                            <img class="card-img-top" src="{{ asset("storage/public/app/$produit->img") }}"
-                                                alt="..." />
+                                            <img class="card-img-top" src="{{ $produit->type->imgUrl() }}" alt="..." />
                                             <!-- Product details-->
                                             <div class="card-body p-4">
                                                 <div class="text-center">
@@ -87,8 +86,7 @@
 
                                         </div>
                                         <!-- Product image-->
-                                        <img class="card-img-top" src=" {{ asset("storage/public/app/$produit->img") }} "
-                                            alt="..." />
+                                        <img class="card-img-top" src="{{ $produit->imgUrl() }}" alt="..." />
                                         <!-- Product details-->
                                         <div class="card-body p-4">
                                             <div class="text-center">
