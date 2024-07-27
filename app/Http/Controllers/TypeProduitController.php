@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TypeProduit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\File;
 class TypeProduitController extends Controller
 {
     /**
@@ -18,26 +18,34 @@ class TypeProduitController extends Controller
 
   
     }
-    public function saveIMG(Request $request, $name){
-        if($request->hasFile($name)){
+    public function saveIMG(Request $request, $name)
+    {
+        if ($request->hasFile($name)) {
             $image = $request->file($name);
-
-            $file_extension = $image->getClientOriginalExtension();
-            $file_name = uniqid();
-            $image_name = 'type_'.$file_name.'.'.$file_extension;
-            $storage_path = "TypeProduit/";
-            if ($image !== null && !$image->getError()) {
-            // $storage= $file->store($storage_path,'public');
-            $storage = Storage::disk('public')->putFileAs($storage_path, $image,$image_name);
-      
-                
+    
+            if ($image->isValid()) {
+                $file_extension = $image->getClientOriginalExtension();
+                $file_name = uniqid();
+                $image_name = 'type_' . $file_name . '.' . $file_extension;
+                $storage_path = 'TypeProduit/';
+    
+                // Assure que le chemin de stockage est correct
+                $full_path = storage_path('app/public/' . $storage_path);
+    
+                // Vérifie si le répertoire existe, sinon le crée
+                if (!File::exists($full_path)) {
+                    File::makeDirectory($full_path, 0755, true);
+                }
+    
+                // Déplace le fichier vers le chemin de stockage
+                $image->move($full_path, $image_name);
+    
+                return $storage_path . $image_name;
             }
-
-
-            return $storage;
         }
-
-        return null;
+    
+        // Retourne une réponse appropriée si le fichier n'est pas valide ou absent
+        return response()->json(['error' => 'File not valid or not found'], 400);
     }
     /**
      * Show the form for creating a new resource.
