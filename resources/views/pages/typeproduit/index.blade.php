@@ -36,7 +36,7 @@
                                 <p class="text-muted  m-0">Fournisseur :
                                     {{ number_format($produit->prix_f, 0, ',', ' ') ?? '' }} F CFA</p>
                                 <p class="text-muted  m-0">Revendeur :
-                                    {{ number_format($produit->prix_f, 0, ',', ' ') ?? '' }} F CFA</p>
+                                    {{ number_format($produit->prix_v, 0, ',', ' ') ?? '' }} F CFA</p>
                                 <p class="text-muted  m-0">Syndicat :
                                     {{ number_format($produit->prix_c, 0, ',', ' ') ?? '' }} F CFA</p>
                             </div>
