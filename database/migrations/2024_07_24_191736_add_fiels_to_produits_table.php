@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('syndicats', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('produits', function (Blueprint $table) {
+            $table->string('user_id')->nullable();
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('syndicats');
+        Schema::table('produits', function (Blueprint $table) {
+            //
+        });
     }
 };

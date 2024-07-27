@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('commandes', function (Blueprint $table) {
+        Schema::create('stock_fournisseurs', function (Blueprint $table) {
             $table->id();
-            $table->decimal('prix')->nullable();
             $table->string('produit_id')->nullable();
             $table->string('user_id')->nullable();
             $table->string('marche_id')->nullable();
             $table->string('type_id')->nullable();
+            $table->integer('qte')->nullable();
+
 
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('commandes');
+        Schema::dropIfExists('stock_fournisseurs');
     }
 };

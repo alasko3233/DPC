@@ -47,17 +47,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-        // Relation avec les cours auxquels l'utilisateur est inscrit
-        public function enrolledCourses()
-        {
-            return $this->belongsToMany(Course::class, 'course_enrollments', 'user_id', 'course_id')
-                ->withPivot('status')
-                ->withTimestamps();
-        }
-    
-        // Relation avec les cours que l'utilisateur a publiés
-        public function publishedCourses()
-        {
-            return $this->hasMany(Course::class, 'instructor_id');
-        }
+    public function fullName()
+    {
+        return $this->firstname. ' ' .$this->lastname;
+    }
+
+
 }

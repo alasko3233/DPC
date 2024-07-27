@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('producteurs', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('type_produits', function (Blueprint $table) {
+            $table->decimal('prix_f')->nullable();
+            $table->decimal('prix_v')->nullable();
+            $table->decimal('prix_c')->nullable();
+
         });
     }
 
@@ -22,6 +24,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('producteurs');
+        Schema::table('type_produits', function (Blueprint $table) {
+            //
+        });
     }
 };

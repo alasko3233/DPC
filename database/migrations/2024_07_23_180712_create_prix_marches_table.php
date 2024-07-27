@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('prix_marches', function (Blueprint $table) {
             $table->id();
+            $table->string('type_id')->nullable();
+            $table->decimal('prix_f')->nullable();
+            $table->decimal('prix_v')->nullable();
+            $table->decimal('prix_c')->nullable();
+
             $table->timestamps();
         });
     }

@@ -17,6 +17,11 @@ return new class extends Migration
             $table->decimal('prix')->nullable();
             $table->integer('qte')->nullable();
             $table->timestamp('date_payement')->nullable();
+            $table->decimal('prix_f')->nullable();
+            $table->decimal('prix_v')->nullable();
+            $table->decimal('prix_c')->nullable();
+            $table->string('type_id')->nullable();
+            $table->string('img')->nullable();
 
             $table->timestamps();
         });

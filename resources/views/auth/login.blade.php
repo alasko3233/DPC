@@ -23,9 +23,8 @@
                 <div class="cards">
                     <div class="card-bodys">
                         <div class="row">
-                            <div class="col-md-12">
-                                <img class="img-fluid" src="{{ asset('assets/img/logo_kalanso.png') }}"
-                                    alt="Republique du mali">
+                            <div class="col-md-12 text-center">
+                                <img class="img-fluid" src="{{ asset('assets/img/logo2.png') }}" alt="Republique du mali">
                             </div>
                         </div>
                         <br>
@@ -108,13 +107,21 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <br>
                                     <div class="form-group row mb-0 justify-content-center mt-1">
                                         <div class="col-md-5 text-center">
-                                            <a class="btn btn-link" href="#">
-                                                {{ __('Mot de passe oublié ?') }}
+                                            Pas de compte ?
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-0 justify-content-center">
+                                        <div class="col-md-6 text-center">
+                                            <a href="{{ route('register') }}"
+                                                class="btn btn-primary px-5 rounded-pill font-weight-bold">
+                                                {{-- {{ __('Connexion') }} --}}
+                                                Creer un Compte
                                             </a>
                                         </div>
-                                    </div> <br> <br>
+                                    </div>
                                     {{-- <div class="form-group row mb-0 justify-content-center mt-1">
                                         <div class="col-md-5 text-center">
                                             Besoin d'aide ? <a class="btn-link"

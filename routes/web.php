@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\TypeProduitController;
 use App\Http\Controllers\Dashboard\BandController;
 use App\Http\Controllers\Dashboard\NewsController;
 use App\Http\Controllers\Dashboard\ProjetController;
@@ -24,7 +27,10 @@ use App\Http\Controllers\Dashboard\ChangePasswordController;
 
  Route::get('/', function () {
      return view('welcome');
- });
+ })->name('accueil');
+ Route::get('/accueil;', function () {
+     return view('welcome');
+ })->name('accueils');
 
 
 
@@ -38,8 +44,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/home', function () {
-        return redirect()->route('dashboard.index');
+        return redirect()->route('accueil');
     });
+    Route::resource('/manage-produit', ProjetController::class);
 
     
     Route::resource('/dashboard', DashboardController::class);
@@ -47,7 +54,10 @@ Route::group(['middleware' => ['auth']], function () {
   //creation des utilisateurs 
 
   // ROUTE PARTIES CONFIGURATION
-  Route::resource('/manage-projet', ProjetController::class);
+  Route::resource('/produits', ProduitController::class);
+  Route::resource('/commande', CommandeController::class);
+  Route::match(['post', 'get'],'/produits/acheter/{id}', [App\Http\Controllers\ProduitController::class, 'acheter'])->name('acheter');
+  Route::resource('/type_produit', TypeProduitController::class);
   Route::resource('/manage-domaine', DomaineController::class);
   Route::resource('/manage-band', BandController::class);
   Route::resource('/manage-membre', MembresController::class);

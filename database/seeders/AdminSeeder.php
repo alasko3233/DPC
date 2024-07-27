@@ -19,9 +19,9 @@ class AdminSeeder extends Seeder
         $SuperAdmimn=   User::create([
                     'name'     =>  'Administrateur',
                     'phone'     => '91919083',
-                    'email'     => 'contact@kalanso.ml',
+                    'email'     => 'contact@dpc.ml',
                     'genre'     => 'male',
-                    'password'  =>Hash::make('kalanso@654321A!'),
+                    'password'  =>Hash::make('dpc@654321A!'),
                     'created_at' => Carbon::now(),
                 ]);
 

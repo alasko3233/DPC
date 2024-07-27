@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('veterinaires', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('commandes', function (Blueprint $table) {
+            $table->timestamp('date_payement')->nullable();
+
         });
     }
 
@@ -22,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('veterinaires');
+        Schema::table('commandes', function (Blueprint $table) {
+            //
+        });
     }
 };
